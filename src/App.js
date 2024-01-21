@@ -2,6 +2,8 @@ import React, { createRef } from "react";
 import Avatar from "react-avatar-edit";
 import { useState } from "react";
 import { useScreenshot, createFileName } from "use-react-screenshot";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './App.css'
 
 import selectedImage from './assets/frame1.png'
@@ -53,41 +55,39 @@ function App() {
     }
   }
   return (
-    <div >
-      <Avatar
-        width={300}
-        height={300}
-        onCrop={onCrop}
-        onClose={onClose}
-        onBeforeFileLoad={onBeforeFileLoad}
-        src={null}
-      />
-     <div style={{ position: 'relative' }}>
-
     
+    <div className="container d-flex align-items-center justify-content-center vh-100">
+      <div>
+        <Avatar
+          width={400}
+          height={400}
+          onCrop={onCrop}
+          onClose={onClose}
+          onBeforeFileLoad={onBeforeFileLoad}
+          src={null}
+        />
+        <div ref={ref} className="card mt-5">
+          {preview && (
+            <img
+              src={preview}
+              alt="Preview"
+              className=" img-fluid"
+              style={{width:"250px",margin:"100px"}}
+            />
+          )}
+          <img
+            className="   img-fluid"
+            src={selectedImage}
+            style={{width:"450px",marginTop: preview ? "-450px" : "0"}}
 
-     <div
-        ref={ref}
-       className="card"
-      >
-  {preview && (
-    <img
-      src={preview}
-      alt="Preview"
-      className="previewImage"
-      // style={{ width: '200px',marginTop:"100px",marginLeft:"95px", cursor: 'pointer', position: 'absolute', top: '0', left: '0' }}
-    />
-  )}
-    <img
-      // style={{ width: '380px',marginTop:"10px",marginLeft:"10px", cursor: 'pointer', position: 'absolute', top: '0', left: '0' }}
-    className="centeredImage"
-    src={selectedImage} // Replace with your image URL
-    alt="Centered Image"
-  />
-   </div>
-</div>
-
-       <button onClick={downloadScreenshot}>Download image</button>
+            alt="Centered Image"
+          />
+        </div>
+        {preview&&<button className="btn btn-primary mt-3" onClick={downloadScreenshot}>
+          Download Image
+        </button>}
+        
+      </div>
     </div>
   );
 }
