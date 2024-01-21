@@ -23,6 +23,40 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.centeredImage {
+  width: 380px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3; /* Ensure this image is above other elements */
+}
+
+.previewImage {
+  width: 200px;
+  margin-top: 90px;
+  margin-left: 90px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2; /* Ensure this image is above the centered image */
+}
+
+
+.border {
+  border: 5px solid #282c34;  /* shorthand for border-width, border-style, and border-color */
+  border-radius: 8px;         /* optional: add border-radius for rounded corners */
+  padding: 10px;              /* optional: add padding for some space around the border */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  /* optional: add a subtle box shadow */
+  transition: border-color 0.3s ease;  /* optional: add a transition effect for border color */
+}
+
+/* Additional styles for a hover effect */
+.border:hover {
+  border-color: #61dafb;  /* change border color on hover */
+}
+
 
 .App-link {
   color: #61dafb;
